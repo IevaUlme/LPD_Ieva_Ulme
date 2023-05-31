@@ -33,11 +33,15 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
 
+    private Animator animator;
+
+    private bool isWalking = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void FixedUpdate()
@@ -69,7 +73,18 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = 0;
         }
+        // Check if the player is moving
+        if (Mathf.Abs(horizontalInput) > 0.1f || Mathf.Abs(verticalInput) > 0.1f)
+        {
+            isWalking = true;
+        }
+        else
+        {
+            isWalking = false;
+        }
 
+        // Call animChange to update the animator parameter
+        animChange(isWalking);
         // limit player movement speed
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         if (flatVel.magnitude > moveSpeed)
@@ -95,6 +110,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
+        animator.Play("Base Layer.Jumping", 0, 0.65f);
+
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
@@ -103,5 +120,11 @@ public class PlayerMovement : MonoBehaviour
     void ResetJump()
     {
         jumpReady = true;
+    }
+
+    void animChange(bool isWalking)
+    {
+        animator.SetBool("RunTrigger", isWalking);
+        animator.SetBool("IdleTrigger", !isWalking);
     }
 }
