@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FinishDetection : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class FinishDetection : MonoBehaviour
         if (gameGoing)
         {
             gameTimer += Time.deltaTime;
+            
         }
     }
         
