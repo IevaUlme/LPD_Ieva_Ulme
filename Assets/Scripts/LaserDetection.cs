@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LaserDetection : MonoBehaviour
 {
@@ -40,6 +41,11 @@ public class LaserDetection : MonoBehaviour
             movementScript.enabled = false;
             cameraScript.enabled = false;
             cameraComp.enabled = false;
+
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             Debug.Log("You got detected!");
         }
     }

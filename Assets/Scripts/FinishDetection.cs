@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FinishDetection : MonoBehaviour
@@ -41,6 +42,10 @@ public class FinishDetection : MonoBehaviour
             cameraScript.enabled = false;
             cameraComp.enabled = false;
             gameGoing = false;
+
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             Debug.Log("You Won!");
             Debug.Log("It took you " + gameTimer.ToString() + " to reach finish");
         }
