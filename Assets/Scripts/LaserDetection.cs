@@ -20,24 +20,21 @@ public class LaserDetection : MonoBehaviour
     {
         cameraObj = GameObject.Find("PlayerCam");
         player = GameObject.FindGameObjectWithTag("Player");
+
         movementScript = player.GetComponent<PlayerMovement>();
         cameraScript = cameraObj.GetComponent<ThirdPersonCam>();
         cameraComp = cameraObj.GetComponent<CinemachineFreeLook>();
+
         Color laserColor = new Color(200, 0, 0, 0.3f);
         laserRend = GetComponent<Renderer>();
         laserRend.material.color = laserColor;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     void OnTriggerEnter (Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            //disables player and camera movement
             movementScript.enabled = false;
             cameraScript.enabled = false;
             cameraComp.enabled = false;

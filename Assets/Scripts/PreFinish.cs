@@ -28,7 +28,6 @@ public class PreFinish : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isTriggered = true;
-            Debug.Log("TEEEEEEEST");
         }
     }
 }

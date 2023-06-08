@@ -8,8 +8,8 @@ public class QuitBuuton : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit(); // no builda 
+        UnityEditor.EditorApplication.isPlaying = false; // no simulatora
     }
 }
 

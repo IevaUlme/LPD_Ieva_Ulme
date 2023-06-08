@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
+        // gets animation controller
         animator = GetComponentInChildren<Animator>();
     }
 

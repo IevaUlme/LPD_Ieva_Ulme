@@ -13,8 +13,6 @@ public class FinishDetection : MonoBehaviour
     private ThirdPersonCam cameraScript;
     private CinemachineFreeLook cameraComp;
 
-    private float gameTimer = 0f;
-    private bool gameGoing = true;
 
     private void Start()
     {
@@ -24,15 +22,6 @@ public class FinishDetection : MonoBehaviour
         cameraScript = cameraObj.GetComponent<ThirdPersonCam>();
         cameraComp = cameraObj.GetComponent<CinemachineFreeLook>();
     }
-
-    private void Update()
-    {
-        if (gameGoing)
-        {
-            gameTimer += Time.deltaTime;
-            
-        }
-    }
         
     void OnTriggerEnter(Collider other)
     {
@@ -41,13 +30,12 @@ public class FinishDetection : MonoBehaviour
             movementScript.enabled = false;
             cameraScript.enabled = false;
             cameraComp.enabled = false;
-            gameGoing = false;
 
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             Debug.Log("You Won!");
-            Debug.Log("It took you " + gameTimer.ToString() + " to reach finish");
+ 
         }
     }
 }

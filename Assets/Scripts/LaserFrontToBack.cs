@@ -41,9 +41,11 @@ public class LaserFrontToBack : MonoBehaviour
     {
         inRoutine = true;
         yield return new WaitForSeconds(1.5f);
+        
         startPos = endPos;
         distance *= -1;
         endPos = new Vector3(laserPos.position.x, laserPos.position.y, laserPos.position.z - distance);
+        
         timePassed = 0;
         inRoutine = false;
     }
